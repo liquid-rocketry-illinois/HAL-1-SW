@@ -5,7 +5,6 @@
  **/
 
 #include <stdio.h>
-
 #include "bmp3.h"
 #include "common.h"
 
