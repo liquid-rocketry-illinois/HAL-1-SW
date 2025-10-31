@@ -16,9 +16,10 @@ int main() {
     std::cout << dataTMR << std::endl;
   
     return 0;
-}
+}                                    
 
 float TMR(float a, float b, float c) {
+    // Change std namespace to something else lol
     float tempA = static_cast<float>(std::round(a));
     float tempB = static_cast<float>(std::round(b));
     float tempC = static_cast<float>(std::round(c));
