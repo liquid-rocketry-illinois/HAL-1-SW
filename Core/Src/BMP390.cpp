@@ -12,7 +12,7 @@ int8_t bmp3_init_sensor(void)
     int8_t rslt;
     uint16_t settings_sel;
 
-    /* Initialize interface (choose SPI or I2C here) */
+    // Initialize interface (choose SPI or I2C here) 
     rslt = bmp3_interface_init(&dev, BMP3_SPI_INTF); 
     bmp3_check_rslt("bmp3_interface_init", rslt);
 
@@ -37,22 +37,22 @@ int8_t bmp3_init_sensor(void)
     return rslt;
 }
 
-struct bmp3_data updateBM3(void)
+struct bmp3_data updateBMP3(void)
 {
     int8_t rslt;
-    struct bmp3_data data = {0};
+    struct bmp3_data data = {};
 
-    /* Check data ready status */
+    // Check data ready status 
     rslt = bmp3_get_status(&status, &dev);
     bmp3_check_rslt("bmp3_get_status", rslt);
 
     if ((rslt == BMP3_OK) && (status.intr.drdy == BMP3_ENABLE))
     {
-        /* Read both temperature and pressure */
+        // Read both temperature and pressure 
         rslt = bmp3_get_sensor_data(BMP3_PRESS_TEMP, &data, &dev);
         bmp3_check_rslt("bmp3_get_sensor_data", rslt);
 
-        /* Clear data ready interrupt by reading status again */
+        // Clear data ready interrupt by reading status again 
         rslt = bmp3_get_status(&status, &dev);
         bmp3_check_rslt("bmp3_get_status", rslt);
     }
